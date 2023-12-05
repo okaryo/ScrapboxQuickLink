@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_app_name__",
+  "short_name": "__MSG_app_name_short__",
+  "description": "__MSG_app_desc__",
+  "default_locale": "ja",
+  "version": "1.0.0",
+  "action": {
+    "default_title": "ScrapboxQuickLink",
+    "default_icon": {
+      "16": "scrapbox_relax_extension16.png",
+      "32": "scrapbox_relax_extension32.png",
+      "48": "scrapbox_relax_extension48.png",
+      "128": "scrapbox_relax_extension128.png"
+    }
+  },
+  "permissions": [
+    "contextMenus"
+  ],
+  "background" : {
+    "service_worker" : "js/background.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "scrapbox_relax_extension16.png",
+    "32": "scrapbox_relax_extension32.png",
+    "48": "scrapbox_relax_extension48.png",
+    "128": "scrapbox_relax_extension128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["js/assets/*"],
+      "matches": ["*://*/*"]
+    },
+    {
+      "resources": ["assets/*"],
+      "matches": ["*://*/*"]
+    }
+  ]
+}
