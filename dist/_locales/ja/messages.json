@@ -16,7 +16,7 @@
     "description": "The title of the context menu item."
   },
   "copy_scrapbox_link_with_selection": {
-    "message": "選択テキストでScrapboxリンクをコピー",
+    "message": "選択箇所でScrapboxリンクをコピー",
     "description": "The title of the context menu item."
   }
 }
