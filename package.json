@@ -1,6 +1,6 @@
 {
   "name": "ScrapboxQuickLink",
-  "description": "This chrome extension makes it easier to copy page link for Scrapbox.",
+  "description": "Chrome Extension for Quick Scrapbox Link",
   "private": true,
   "scripts": {
     "dev": "vite build --watch --mode development",
