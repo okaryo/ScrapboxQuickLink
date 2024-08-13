@@ -1,5 +1,9 @@
 import t from "./translation";
 
+if (import.meta.env.DEV) {
+	chrome.action.setBadgeText({ text: "DEV" });
+}
+
 chrome.contextMenus.onClicked.addListener((info, tab) => {
 	if (info.menuItemId === "copy-scrapbox-link-with-page-title") {
 		addLinkToClipboard(tab.title, info.pageUrl);
