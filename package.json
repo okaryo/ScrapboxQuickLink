@@ -12,10 +12,10 @@
   "author": "okaryo",
   "license": "MIT",
   "devDependencies": {
-    "@biomejs/biome": "1.7.0",
-    "@types/chrome": "^0.0.266",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.10",
+    "@biomejs/biome": "1.9.4",
+    "@types/chrome": "^0.0.279",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
     "vitest": "^2.1.4"
   },
   "dependencies": {
