@@ -25,8 +25,18 @@ chrome.contextMenus.create({
 });
 
 const addLinkToClipboard = async (title: string, url: string) => {
+	const offscreenUrl = chrome.runtime.getURL("offscreen.html");
+	const existingContexts = await chrome.runtime.getContexts({
+		contextTypes: [chrome.runtime.ContextType.OFFSCREEN_DOCUMENT],
+		documentUrls: [offscreenUrl],
+	});
+
+	if (existingContexts.length > 0) {
+		chrome.offscreen.closeDocument();
+	}
+
 	await chrome.offscreen.createDocument({
-		url: "../offscreen.html",
+		url: offscreenUrl,
 		reasons: [chrome.offscreen.Reason.CLIPBOARD],
 		justification: "Write text to the clipboard.",
 	});
@@ -37,3 +47,16 @@ const addLinkToClipboard = async (title: string, url: string) => {
 		data: `[${title} ${decodeURIComponent(url)}]`,
 	});
 };
+
+chrome.runtime.onMessage.addListener((message) => {
+	if (message.type === "copy-complete") {
+		// TODO: 結果によってSnackbarを表示する
+		if (message.status === "success") {
+			// console.log("Copy succeeded:", message.message);
+		} else {
+			// console.error("Copy failed:", message.message);
+		}
+
+		chrome.offscreen.closeDocument();
+	}
+});

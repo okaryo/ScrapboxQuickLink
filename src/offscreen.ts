@@ -27,8 +27,21 @@ const handleClipboardWrite = async (data: string) => {
 		const textElement = document.querySelector("#text") as HTMLInputElement;
 		textElement.value = data;
 		textElement.select();
-		document.execCommand("copy");
-	} finally {
-		window.close();
+		const result = document.execCommand("copy");
+		if (result) {
+			chrome.runtime.sendMessage({
+				type: "copy-complete",
+				status: "success",
+				message: "Copy to clipboard successful",
+			});
+		} else {
+			throw new Error("Copy to clipboard failed");
+		}
+	} catch (error) {
+		chrome.runtime.sendMessage({
+			type: "copy-complete",
+			status: "error",
+			message: error.message,
+		});
 	}
 };
