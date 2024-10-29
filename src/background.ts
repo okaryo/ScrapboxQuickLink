@@ -47,3 +47,16 @@ const addLinkToClipboard = async (title: string, url: string) => {
 		data: `[${title} ${decodeURIComponent(url)}]`,
 	});
 };
+
+chrome.runtime.onMessage.addListener((message) => {
+	if (message.type === "copy-complete") {
+		// TODO: 結果によってSnackbarを表示する
+		if (message.status === "success") {
+			// console.log("Copy succeeded:", message.message);
+		} else {
+			// console.error("Copy failed:", message.message);
+		}
+
+		chrome.offscreen.closeDocument();
+	}
+});
