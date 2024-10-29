@@ -50,12 +50,15 @@ const addLinkToClipboard = async (title: string, url: string) => {
 
 chrome.runtime.onMessage.addListener((message) => {
 	if (message.type === "copy-complete") {
-		// TODO: 結果によってSnackbarを表示する
-		if (message.status === "success") {
-			// console.log("Copy succeeded:", message.message);
-		} else {
-			// console.error("Copy failed:", message.message);
-		}
+		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+			chrome.tabs
+				.sendMessage(tabs[0].id, {
+					type: "show-snackbar",
+					status: message.status,
+					data: message.data,
+				})
+				.catch((error) => console.error(error));
+		});
 
 		chrome.offscreen.closeDocument();
 	}

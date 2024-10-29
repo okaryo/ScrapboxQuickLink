@@ -33,6 +33,7 @@ const handleClipboardWrite = async (data: string) => {
 				type: "copy-complete",
 				status: "success",
 				message: "Copy to clipboard successful",
+				data,
 			});
 		} else {
 			throw new Error("Copy to clipboard failed");
