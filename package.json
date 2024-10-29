@@ -7,7 +7,9 @@
     "dev": "NODE_ENV=development vite build --watch --mode development",
     "build": "vite build",
     "test": "vitest run",
-    "check": "biome check --apply-unsafe ./src"
+    "check": "biome check ./src",
+    "check:fix": "biome check --write --unsafe ./src",
+    "check:ci": "biome ci ./src"
   },
   "author": "okaryo",
   "license": "MIT",
