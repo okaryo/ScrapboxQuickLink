@@ -14,9 +14,9 @@
   "author": "okaryo",
   "license": "MIT",
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.4.16",
     "@types/chrome": "^0.0.279",
-    "typescript": "^5.6.3",
+    "typescript": "^6.0.3",
     "vite": "^5.4.10",
     "vitest": "^2.1.4"
   },
